@@ -246,61 +246,47 @@
 
 	var tabs = function() {
 
-		// Auto adjust height
-		$('.fh5co-tab-content-wrap').css('height', 0);
 		var autoHeight = function() {
+			var tabContentWrap = $('.fh5co-tab-content-wrap');
+			if (!tabContentWrap.length) return;
 
-			setTimeout(function(){
-
-				var tabContentWrap = $('.fh5co-tab-content-wrap'),
-					tabHeight = $('.fh5co-tab-nav').outerHeight(),
-					formActiveHeight = $('.tab-content.active').outerHeight(),
-					totalHeight = parseInt(tabHeight + formActiveHeight + 90);
-
-					tabContentWrap.css('height', totalHeight );
-
-				$(window).resize(function(){
-					var tabContentWrap = $('.fh5co-tab-content-wrap'),
-						tabHeight = $('.fh5co-tab-nav').outerHeight(),
-						formActiveHeight = $('.tab-content.active').outerHeight(),
-						totalHeight = parseInt(tabHeight + formActiveHeight + 90);
-
-						tabContentWrap.css('height', totalHeight );
-				});
-
-			}, 100);
-			
+			// Let the active panel size itself naturally (position:relative)
+			// then set wrap height to match nav + active content
+			var tabHeight = $('.fh5co-tab-nav').outerHeight() || 0;
+			var formActiveHeight = $('.tab-content.active').outerHeight() || 0;
+			var totalHeight = tabHeight + formActiveHeight + 40;
+			tabContentWrap.css('height', totalHeight);
 		};
 
+		// Initial + after images/fonts settle
 		autoHeight();
-
+		setTimeout(autoHeight, 150);
+		setTimeout(autoHeight, 500);
+		$(window).on('load resize', autoHeight);
 
 		// Click tab menu
 		$('.fh5co-tab-nav a').on('click', function(event){
-			
+			event.preventDefault();
+
 			var $this = $(this),
 				tab = $this.data('tab');
 
+			$('.fh5co-tab-nav li').removeClass('active');
+			$this.closest('li').addClass('active');
+
 			$('.tab-content')
+				.removeClass('active fadeIn')
 				.addClass('animated-fast fadeOutDown');
 
-			$('.fh5co-tab-nav li').removeClass('active');
-			
-			$this
-				.closest('li')
-					.addClass('active')
+			$this.closest('.fh5co-tabs')
+				.find('.tab-content[data-tab-content="'+tab+'"]')
+				.removeClass('fadeOutDown')
+				.addClass('animated-fast active fadeIn');
 
-			$this
-				.closest('.fh5co-tabs')
-					.find('.tab-content[data-tab-content="'+tab+'"]')
-					.removeClass('animated-fast fadeOutDown')
-					.addClass('animated-fast active fadeIn');
-
-
-			autoHeight();
-			event.preventDefault();
-
-		}); 
+			// Recalc after the active class is applied
+			setTimeout(autoHeight, 50);
+			setTimeout(autoHeight, 300);
+		});
 	};
 
 	
