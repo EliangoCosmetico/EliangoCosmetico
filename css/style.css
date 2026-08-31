@@ -777,6 +777,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-tabs .fh5co-tab-content-wrap {
   clear: both;
   position: relative;
+  overflow: hidden; /* contain floated schedule items */
 }
 .fh5co-tabs .fh5co-tab-content-wrap .tab-content {
   position: absolute;
@@ -789,12 +790,21 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-tabs .fh5co-tab-content-wrap .tab-content.active {
   opacity: 1;
   visibility: visible;
+  position: relative; /* active tab contributes real height */
 }
 .fh5co-tabs .class-schedule {
   width: 100%;
-  float: left;
   margin: 0;
   padding: 0;
+  list-style: none;
+  /* clearfix so height is measured correctly */
+  display: block;
+  overflow: hidden;
+}
+.fh5co-tabs .class-schedule::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 .fh5co-tabs .class-schedule li {
   width: 25%;
@@ -805,15 +815,21 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
+  box-sizing: border-box;
 }
 @media screen and (max-width: 768px) {
   .fh5co-tabs .class-schedule li {
     width: 50%;
   }
+  .fh5co-tabs {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 480px) {
   .fh5co-tabs .class-schedule li {
     width: 100%;
+    float: none;
+    border-right: none;
   }
 }
 .fh5co-tabs .class-schedule li:first-child {
