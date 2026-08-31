@@ -41,6 +41,10 @@ const translations = {
     "service-manicure": "Manicure",
     "service-hair": "Cabeleireiro",
     "service-barber": "Barbeiro",
+    "service-makeup-pro": "Maquiagem profissional",
+    "service-hair-pro": "Cabeleireiro profissional",
+    "service-manicure-pro": "Manicure profissional",
+    "schedule-empty": "Sem formações agendadas",
 
     // Pricing
     "pricing-title": "PLANO DE PREÇOS",
@@ -139,6 +143,10 @@ const translations = {
     "service-manicure": "Manicure",
     "service-hair": "Hairdresser",
     "service-barber": "Barber",
+    "service-makeup-pro": "Professional Makeup",
+    "service-hair-pro": "Professional Hairdressing",
+    "service-manicure-pro": "Professional Manicure",
+    "schedule-empty": "No trainings scheduled",
 
     // Pricing
     "pricing-title": "PRICING PLANS",
@@ -216,3 +224,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("lang") || "pt";
   setLanguage(savedLang);
 });
+
