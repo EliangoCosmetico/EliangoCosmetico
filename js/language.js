@@ -41,9 +41,9 @@ const translations = {
     "service-manicure": "Manicure",
     "service-hair": "Cabeleireiro",
     "service-barber": "Barbeiro",
-    "service-makeup-pro": "Maquiagem profissional",
-    "service-hair-pro": "Cabeleireiro profissional",
-    "service-manicure-pro": "Manicure profissional",
+    "service-makeup-pro": "Formação Maquiagem profissional",
+    "service-hair-pro": "Formação Cabeleireiro profissional",
+    "service-manicure-pro": "Formação Manicure profissional",
     "schedule-empty": "Sem formações agendadas",
 
     // Pricing
@@ -143,9 +143,9 @@ const translations = {
     "service-manicure": "Manicure",
     "service-hair": "Hairdresser",
     "service-barber": "Barber",
-    "service-makeup-pro": "Professional Makeup",
-    "service-hair-pro": "Professional Hairdressing",
-    "service-manicure-pro": "Professional Manicure",
+    "service-makeup-pro": "Professional Makeup Training",
+    "service-hair-pro": "Professional Hairdressing Training",
+    "service-manicure-pro": "Professional Manicure Training",
     "schedule-empty": "No trainings scheduled",
 
     // Pricing
